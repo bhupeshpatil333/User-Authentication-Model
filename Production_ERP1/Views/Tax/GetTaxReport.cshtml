@@ -1,0 +1,31 @@
+﻿@model  IEnumerable<Production_ERP1.Db_Context.spGetTaxReport_Result>
+@{
+    ViewBag.Title = "GetTaxReport";
+}
+
+<h2>Tax Report</h2>
+
+<table class="table table-bordered border-4">
+    <thead>
+        <tr>
+            <th>Tax Id</th>
+            <th>Tax Name</th>
+            <th>Tax Percentage</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Tax_Id</td>
+                <td>@item.Tax_Name</td>
+                <td>@item.Tax_Percentage</td>
+                
+                <td>@Html.ActionLink("Edit", "GetById", new { id = item.Tax_Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteData", new { id = item.Tax_Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>

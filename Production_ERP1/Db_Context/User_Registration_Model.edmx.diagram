@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9f17a82bd8a848c79bc95b4460fdbf1b" Name="Diagram1">
+        <EntityTypeShape EntityType="Db_ProductionModel.User_Registration" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_ProductionModel.EmailConfig" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.EmailTemplate" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Client_Registration" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.ErrorLog" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Item" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Person" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Person_Type" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Product" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Tax" Width="1.5" PointX="4.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.PO_Request_Header" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.PO_Request_Line" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Purchase_Header" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Db_ProductionModel.Purchase_Line_Table" Width="1.5" PointX="9.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

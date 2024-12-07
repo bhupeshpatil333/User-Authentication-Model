@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Db_ProductionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User_Registration">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="User_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Verify" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Profile_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="Db_Production_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="User_Registration" EntityType="Self.User_Registration" />
+    <EntitySet Name="EmailConfigs" EntityType="Db_ProductionModel.EmailConfig" />
+    <EntitySet Name="EmailTemplates" EntityType="Db_ProductionModel.EmailTemplate" />
+    <FunctionImport Name="UpdateOtp">
+      <Parameter Name="Email_Id" Mode="In" Type="String" />
+      <Parameter Name="Otp" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Client_Registration" EntityType="Db_ProductionModel.Client_Registration" />
+    <EntitySet Name="ErrorLogs" EntityType="Db_ProductionModel.ErrorLog" />
+    <FunctionImport Name="GetAllReport" ReturnType="Collection(Db_ProductionModel.GetAllReport_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetClientReport">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Items" EntityType="Db_ProductionModel.Item" />
+    <EntitySet Name="People" EntityType="Db_ProductionModel.Person" />
+    <EntitySet Name="Person_Type" EntityType="Db_ProductionModel.Person_Type" />
+    <EntitySet Name="Products" EntityType="Db_ProductionModel.Product" />
+    <EntitySet Name="Taxes" EntityType="Db_ProductionModel.Tax" />
+    <FunctionImport Name="spGetItemReport" ReturnType="Collection(Db_ProductionModel.spGetItemReport_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetPerson_TypeReport" ReturnType="Collection(Db_ProductionModel.spGetPerson_TypeReport_Result)" />
+    <FunctionImport Name="spGetPersonReport" ReturnType="Collection(Db_ProductionModel.spGetPersonReport_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetProductReport" ReturnType="Collection(Db_ProductionModel.spGetProductReport_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetTaxReport" ReturnType="Collection(Db_ProductionModel.spGetTaxReport_Result)" />
+    <EntitySet Name="PO_Request_Header" EntityType="Db_ProductionModel.PO_Request_Header" />
+    <EntitySet Name="PO_Request_Line" EntityType="Db_ProductionModel.PO_Request_Line" />
+    <EntitySet Name="Purchase_Header" EntityType="Db_ProductionModel.Purchase_Header" />
+    <EntitySet Name="Purchase_Line_Table" EntityType="Db_ProductionModel.Purchase_Line_Table" />
+    <FunctionImport Name="SpLineHedar" ReturnType="Collection(String)">
+      <Parameter Name="Request_Header_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TestSp" ReturnType="Collection(String)" />
+    <FunctionImport Name="Sp_JoinLine" ReturnType="Collection(String)" />
+    <FunctionImport Name="sp_joinHeader" ReturnType="Collection(Db_ProductionModel.sp_joinHeader_Result)">
+      <Parameter Name="Request_Header_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetClientReports" ReturnType="Collection(Db_ProductionModel.spGetClientReports_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="EmailConfig">
+    <Key>
+      <PropertyRef Name="Config_id" />
+    </Key>
+    <Property Name="Config_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Config_port" Type="Int32" />
+    <Property Name="Config_host" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="from_mail_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="from_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EmailTemplate">
+    <Key>
+      <PropertyRef Name="template_id" />
+    </Key>
+    <Property Name="template_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="template_subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="template_body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="flag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Client_Registration">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClientBusiness_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Client_Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Client_GSTNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Client_GST_Document" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Client_Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorController" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorFunction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="GetAllReport_Result">
+    <Property Type="Int32" Name="ClientId" Nullable="false" />
+    <Property Type="String" Name="ClientName" Nullable="true" />
+    <Property Type="String" Name="ClientBusiness_Name" Nullable="true" />
+    <Property Type="String" Name="Client_Logo" Nullable="true" />
+    <Property Type="String" Name="Client_GSTNo" Nullable="true" />
+    <Property Type="String" Name="Client_GST_Document" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="String" Name="Client_Contact" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Item_Id" />
+    </Key>
+    <Property Name="Item_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Item_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Product_Id" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Person_Id" />
+    </Key>
+    <Property Name="Person_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Person_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Person_Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PersonType_Id" Type="Int32" />
+    <Property Name="Email_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Person_Type">
+    <Key>
+      <PropertyRef Name="PersonType_Id" />
+    </Key>
+    <Property Name="PersonType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Person_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="Tax_Id" />
+    </Key>
+    <Property Name="Tax_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tax_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tax_Percentage" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <ComplexType Name="spGetItemReport_Result">
+    <Property Type="Int32" Name="Item_Id" Nullable="false" />
+    <Property Type="String" Name="Item_Name" Nullable="true" />
+    <Property Type="Int32" Name="Product_Id" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spGetPerson_TypeReport_Result">
+    <Property Type="Int32" Name="PersonType_Id" Nullable="false" />
+    <Property Type="String" Name="Person_Name" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spGetPersonReport_Result">
+    <Property Type="Int32" Name="Person_Id" Nullable="false" />
+    <Property Type="String" Name="Person_Name" Nullable="true" />
+    <Property Type="String" Name="Person_Contact" Nullable="true" />
+    <Property Type="Int32" Name="PersonType_Id" Nullable="true" />
+    <Property Type="String" Name="Email_Id" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spGetProductReport_Result">
+    <Property Type="Int32" Name="Product_Id" Nullable="false" />
+    <Property Type="String" Name="Product_Name" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="spGetTaxReport_Result">
+    <Property Type="Int32" Name="Tax_Id" Nullable="false" />
+    <Property Type="String" Name="Tax_Name" Nullable="true" />
+    <Property Type="Decimal" Name="Tax_Percentage" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <EntityType Name="PO_Request_Header">
+    <Key>
+      <PropertyRef Name="Request_Header_Id" />
+    </Key>
+    <Property Name="Request_Header_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Request_Header_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Request_Header_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PO_Request_Line">
+    <Key>
+      <PropertyRef Name="Request_Line_Id" />
+    </Key>
+    <Property Name="Request_Line_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Request_Header_Id" Type="Int32" />
+    <Property Name="Product_Id" Type="Int32" />
+    <Property Name="Item_Id" Type="Int32" />
+    <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Purchase_Header">
+    <Key>
+      <PropertyRef Name="Purchase_Header_Id" />
+    </Key>
+    <Property Name="Purchase_Header_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Requirement_Header_Id" Type="Int32" />
+    <Property Name="Person_Id" Type="Int32" />
+    <Property Name="PO_Date" Type="DateTime" Precision="3" />
+    <Property Name="Basic_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Discount_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Purchase_Line_Table">
+    <Key>
+      <PropertyRef Name="Purchase_Line_Id" />
+    </Key>
+    <Property Name="Purchase_Line_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Purchase_Header_Id" Type="Int32" />
+    <Property Name="Product_Id" Type="Int32" />
+    <Property Name="Item_Id" Type="Int32" />
+    <Property Name="Tax_Id" Type="Int32" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Discount_Percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Basic_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Total_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Discount_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <ComplexType Name="sp_joinHeader_Result">
+    <Property Type="Int32" Name="Request_Header_Id" Nullable="false" />
+    <Property Type="String" Name="Request_Header_Code" Nullable="true" />
+    <Property Type="String" Name="Product_Name" Nullable="true" />
+    <Property Type="String" Name="Item_Name" Nullable="true" />
+    <Property Type="Int32" Name="Product_Id" Nullable="false" />
+    <Property Type="Int32" Name="Item_Id" Nullable="false" />
+    <Property Type="Decimal" Name="Qty" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="rate" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="tax_id" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="taxamount" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="tax_totalamount" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="discoutper" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="descoutamt" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="toalamout" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="spGetClientReports_Result">
+    <Property Type="Int32" Name="ClientId" Nullable="false" />
+    <Property Type="String" Name="ClientName" Nullable="true" />
+    <Property Type="String" Name="ClientBusiness_Name" Nullable="true" />
+    <Property Type="String" Name="Client_Logo" Nullable="true" />
+    <Property Type="String" Name="Client_GSTNo" Nullable="true" />
+    <Property Type="String" Name="Client_GST_Document" Nullable="true" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="String" Name="Client_Contact" Nullable="true" />
+  </ComplexType>
+</Schema>

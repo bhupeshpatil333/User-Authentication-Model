@@ -1,0 +1,33 @@
+﻿@model  IEnumerable<Production_ERP1.Db_Context.spGetProductReport_Result>
+@{
+    ViewBag.Title = "GetProductReport";
+}
+
+<h2>Product Report</h2>
+
+
+<table class="table table-bordered border-4">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>User Id</th>
+            <th>Product Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Product_Id</td>
+                <td> @Html.TextBoxFor(m => item.UserId, new { @class = "form-control", @readonly = "readonly", @disabled = "disabled" }) </td>
+                <td>@item.Product_Name</td>
+
+                <td>@Html.ActionLink("Edit", "GetById", new { id = item.Product_Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteData", new { id = item.Product_Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>

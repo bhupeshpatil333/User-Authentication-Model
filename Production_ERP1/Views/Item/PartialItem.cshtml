@@ -1,0 +1,43 @@
+﻿@model Production_ERP1.Models.Item_Model
+@{
+    ViewBag.Title = "PartialItem";
+}
+
+<h2>Enter Items</h2>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <img src="~/Image/Login_Images/" class="img-fluid" alt="Login Image" style="max-width: auto; height: auto;" />
+        </div>
+
+        <div class="col-md-6">
+            @using (Html.BeginForm("SaveOrEdit", "Item", FormMethod.Post))
+            {
+
+                <div class="form-group mb-3">
+                    <label>Item Name</label>
+                    @Html.HiddenFor(m => m.Item_Id)
+
+                    @Html.TextBoxFor(m => m.Item_Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Item_Name, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group mb-3">
+                    <label>Product Id</label>
+
+                    @Html.DropDownListFor(m => m.Product_Id, new SelectList(ViewBag.productlist, "Value", "Text"), "Select Products", new { @class = "form-control" })
+                    @*@Html.TextBoxFor(m => m.Product_Id, new { @class = "form-control"})*@
+                    @Html.ValidationMessageFor(m => m.Product_Id, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.UserId)
+                </div>
+
+                <div class="form-group text-center ">
+                    <br />
+                    <button type="submit" class="btn btn-success d-lg-grid" style="width: auto;">Save</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

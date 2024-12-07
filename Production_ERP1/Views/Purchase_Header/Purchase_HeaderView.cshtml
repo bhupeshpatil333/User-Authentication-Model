@@ -1,0 +1,76 @@
+﻿@model Production_ERP1.Models.Purchase_Header_Model
+@{
+    ViewBag.Title = "Purchase_HeaderView";
+    Layout = "";
+}
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<script>
+    function GetSpResult() {
+        let porequesId = $("#codeid").val();
+        $.ajax({
+            url: '/Purchase_Header/GetPoData',
+            type: 'get',
+            data: { hedar_id: porequesId },
+            dataType: 'html',
+            success: function (data) {
+                $('#PartialViewRender').html(data)
+              
+            },
+            error: function(data) {
+               
+            }
+        });
+    }
+</script>
+
+<table class="table table-bordered border-3 table-secondary" style="margin: 20px auto; width: 100%; border-radius: 10px; overflow: hidden;">
+    <thead>
+        <tr>
+            <th style="padding: 15px; text-align: center;">Requirement Code</th>
+            <th style="padding: 15px; text-align: center;">PO Date</th>
+            <th style="padding: 20px; text-align: center;">Person</th>
+            <th style="padding: 15px; text-align: center;">Basic Amount</th>
+
+            <th style="padding: 15px; text-align: center;">Total Discount</th>
+            <th style="padding: 15px; text-align: center;">Tax Amount</th>
+            <th style="padding: 15px; text-align: center;">Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                @*@Html.HiddenFor(m => m.Purchase_Header_Id)*@
+                @Html.DropDownListFor(m => m.Requirement_Header_Id, new SelectList(ViewBag.POCodeDDL, "Value", "Text"), new { @class = "form-control", id = "codeid", style = "width: 90%; margin: 0 auto;", OnChange = "GetSpResult()" })
+                @Html.ValidationMessageFor(m => m.Requirement_Header_Id, "", new { @class = "text-danger" })
+            </td>
+            <td style="text-align: center;">
+                @Html.TextBoxFor(m => m.PO_Date, new { @class = "form-control", type = "Date", style = "width: 90%; margin: 0 auto;" })
+                @Html.ValidationMessageFor(m => m.PO_Date, "", new { @class = "text-danger" })
+            </td>
+            <td style="text-align: center;">
+                @Html.DropDownListFor(m => m.Person_Id, new SelectList(ViewBag.PersonDDL, "Value", "Text"), new { @class = "form-cotrol", id = "personid", style = "width: 100%; margin: 0 auto;" })
+                @Html.ValidationMessageFor(m => m.Person_Id, "", new { @class = "text-danger" })
+            </td>
+            <td style="text-align: center;">
+                @Html.TextBoxFor(m => m.Basic_Amount, new { @class = "form-control", id = "BasicAmount", @readonly = "readonly", style = "width: 90%; margin: 0 auto;"})
+                @Html.ValidationMessageFor(m => m.Basic_Amount, "", new { @class = "text-danger" })
+            </td>
+
+            <td style="text-align: center;">
+                @Html.TextBoxFor(m => m.Discount_Amount, new { @class = "form-control", id = "DiscountAmount", @readonly = "readonly", style = "width: 90%; margin: 0 auto;", Value = "0.00" })
+                @Html.ValidationMessageFor(m => m.Discount_Amount, "", new { @class = "text-danger" })
+            </td>
+            <td style="text-align: center;">
+                @Html.TextBoxFor(m => m.Tax_Amount, new { @class = "form-control", id = "TaxAmountHeader", @readonly = "readonly", style = "width: 90%; margin: 0 auto;", Value = "0.00" })
+                @Html.ValidationMessageFor(m => m.Tax_Amount, "", new { @class = "text-danger" })
+            </td>
+            <td style="text-align: center;">
+                @Html.TextBoxFor(m => m.Total_Amount, new { @class = "form-control", id = "TotalAmountHeader", @readonly = "readonly", style = "width: 90%; margin: 0 auto;", Value = "0.00" })
+                @Html.ValidationMessageFor(m => m.Total_Amount, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+        </tr>
+    </tbody>
+</table>

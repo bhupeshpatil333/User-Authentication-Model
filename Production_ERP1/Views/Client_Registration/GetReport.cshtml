@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Production_ERP1.Db_Context.spGetClientReports_Result>
+@{
+    ViewBag.Title = "GetReport";
+}
+
+<h2>Client Report</h2>
+
+<table class="table table-bordered border-4">
+    <thead>
+        <tr>
+            <th>Client ID</th>
+            <th>User ID</th>
+            <th>Client Name</th>
+            <th>Business Name</th>
+            <th>Logo</th>
+
+            <th>GST Number</th>
+            <th>Contact</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.ClientId</td>
+                <td>@item.UserId</td>
+                <td>@item.ClientName</td>
+                <td>@item.ClientBusiness_Name</td>
+                <td><img src="@Url.Content(@item.Client_Logo)" width="75" height="75"></td>
+                <td>@item.Client_GSTNo</td>
+                <td>@item.Client_Contact</td>
+                <td>@Html.ActionLink("Edit", "GetById", new { id = item.ClientId })</td>
+                <td>@Html.ActionLink("Delete", "DeleteData", new { id = item.ClientId })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

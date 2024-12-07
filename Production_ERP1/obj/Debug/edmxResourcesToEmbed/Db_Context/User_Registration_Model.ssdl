@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Db_ProductionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client_Registration">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar(max)" />
+    <Property Name="ClientBusiness_Name" Type="nvarchar(max)" />
+    <Property Name="Client_Logo" Type="nvarchar(max)" />
+    <Property Name="Client_GSTNo" Type="nvarchar(max)" />
+    <Property Name="Client_GST_Document" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Client_Contact" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="EmailConfig">
+    <Key>
+      <PropertyRef Name="Config_id" />
+    </Key>
+    <Property Name="Config_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Config_port" Type="int" />
+    <Property Name="Config_host" Type="nvarchar(max)" />
+    <Property Name="from_mail_id" Type="nvarchar(max)" />
+    <Property Name="from_password" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="EmailTemplate">
+    <Key>
+      <PropertyRef Name="template_id" />
+    </Key>
+    <Property Name="template_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="template_subject" Type="nvarchar(max)" />
+    <Property Name="template_body" Type="nvarchar(max)" />
+    <Property Name="flag" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ErrorMessage" Type="nvarchar(max)" />
+    <Property Name="ErrorController" Type="nvarchar(max)" />
+    <Property Name="ErrorFunction" Type="nvarchar(max)" />
+    <Property Name="ErrorLine" Type="nvarchar(max)" />
+    <Property Name="ErrorData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Item_Id" />
+    </Key>
+    <Property Name="Item_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Item_Name" Type="nvarchar(max)" />
+    <Property Name="Product_Id" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Person_Id" />
+    </Key>
+    <Property Name="Person_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Person_Name" Type="nvarchar(max)" />
+    <Property Name="Person_Contact" Type="nvarchar(max)" />
+    <Property Name="PersonType_Id" Type="int" />
+    <Property Name="Email_Id" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Person_Type">
+    <Key>
+      <PropertyRef Name="PersonType_Id" />
+    </Key>
+    <Property Name="PersonType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Person_Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PO_Request_Header">
+    <Key>
+      <PropertyRef Name="Request_Header_Id" />
+    </Key>
+    <Property Name="Request_Header_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Request_Header_Code" Type="nvarchar(max)" />
+    <Property Name="Request_Header_Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PO_Request_Line">
+    <Key>
+      <PropertyRef Name="Request_Line_Id" />
+    </Key>
+    <Property Name="Request_Line_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Request_Header_Id" Type="int" />
+    <Property Name="Product_Id" Type="int" />
+    <Property Name="Item_Id" Type="int" />
+    <Property Name="Qty" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_Name" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Purchase_Header">
+    <Key>
+      <PropertyRef Name="Purchase_Header_Id" />
+    </Key>
+    <Property Name="Purchase_Header_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Requirement_Header_Id" Type="int" />
+    <Property Name="Person_Id" Type="int" />
+    <Property Name="PO_Date" Type="datetime" />
+    <Property Name="Basic_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Discount_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Purchase_Line_Table">
+    <Key>
+      <PropertyRef Name="Purchase_Line_Id" />
+    </Key>
+    <Property Name="Purchase_Line_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Purchase_Header_Id" Type="int" />
+    <Property Name="Product_Id" Type="int" />
+    <Property Name="Item_Id" Type="int" />
+    <Property Name="Tax_Id" Type="int" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Discount_Percentage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Basic_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Total_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Discount_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="Tax_Id" />
+    </Key>
+    <Property Name="Tax_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tax_Name" Type="nvarchar(max)" />
+    <Property Name="Tax_Percentage" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="User_Registration">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="Email_Id" Type="nvarchar(max)" />
+    <Property Name="User_Password" Type="nvarchar(max)" />
+    <Property Name="Verify" Type="nvarchar(max)" />
+    <Property Name="Profile_Image" Type="nvarchar(max)" />
+    <Property Name="Created_Date" Type="datetime" />
+  </EntityType>
+  <Function Name="sp_joinHeader" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Request_Header_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetClientReports" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetItemReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetPerson_TypeReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetPersonReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetProductReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetTaxReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateOtp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email_Id" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Otp" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="Db_ProductionModelStoreContainer">
+    <EntitySet Name="Client_Registration" EntityType="Self.Client_Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailConfig" EntityType="Self.EmailConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailTemplate" EntityType="Self.EmailTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person_Type" EntityType="Self.Person_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PO_Request_Header" EntityType="Self.PO_Request_Header" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PO_Request_Line" EntityType="Self.PO_Request_Line" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchase_Header" EntityType="Self.Purchase_Header" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchase_Line_Table" EntityType="Self.Purchase_Line_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Registration" EntityType="Self.User_Registration" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

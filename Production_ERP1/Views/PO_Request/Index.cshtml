@@ -1,0 +1,19 @@
+﻿@model Production_ERP1.Models.Request_Header_LIne_Model
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Index</h2>*@
+
+@using (Html.BeginForm("SaveOrUpdate", "PO_Request", FormMethod.Post))
+{
+    @Html.Partial("~/Views/PO_Request/RequestHeader.cshtml", Model.header_obj)
+    @Html.Partial("/Views/PO_Request/Request_Line.cshtml", Model.line_obj)
+    <td colspan="2" style="text-align: center;">
+        <button type="submit" class="btn btn-success" style="width: auto; margin: 0 130px;">Save</button>
+    </td>
+}
+
+
+

@@ -1,0 +1,149 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Prodection_Project_Erp\\Production_ERP1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|c:\\prodection_project_erp\\production_erp1\\controllers\\client_registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:controllers\\client_registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|C:\\Prodection_Project_Erp\\Production_ERP1\\views\\person\\partialperson.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:views\\person\\partialperson.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|C:\\Prodection_Project_Erp\\Production_ERP1\\controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|C:\\Prodection_Project_Erp\\Production_ERP1\\controllers\\user_registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:controllers\\user_registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|C:\\Prodection_Project_Erp\\Production_ERP1\\views\\purchase_header\\purchase_lineview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:views\\purchase_header\\purchase_lineview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|C:\\Prodection_Project_Erp\\Production_ERP1\\controllers\\purchase_headercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:controllers\\purchase_headercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|C:\\Prodection_Project_Erp\\Production_ERP1\\views\\purchase_header\\purchase_headerview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:views\\purchase_header\\purchase_headerview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|C:\\Prodection_Project_Erp\\Production_ERP1\\views\\purchase_header\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{18E01A65-44D6-423A-9843-0D5BF1A05CB1}|Production_ERP1.csproj|solutionrelative:views\\purchase_header\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Client_RegistrationController.cs",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\Client_RegistrationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Client_RegistrationController.cs",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\Client_RegistrationController.cs",
+              "RelativeToolTip": "Controllers\\Client_RegistrationController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T19:25:05.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PartialPerson.cshtml",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Person\\PartialPerson.cshtml",
+              "RelativeDocumentMoniker": "Views\\Person\\PartialPerson.cshtml",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Person\\PartialPerson.cshtml",
+              "RelativeToolTip": "Views\\Person\\PartialPerson.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T18:38:29.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PersonController.cs",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\PersonController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PersonController.cs",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\PersonController.cs",
+              "RelativeToolTip": "Controllers\\PersonController.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAgwEIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T18:37:51.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User_RegistrationController.cs",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\User_RegistrationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\User_RegistrationController.cs",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\User_RegistrationController.cs",
+              "RelativeToolTip": "Controllers\\User_RegistrationController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T08:59:19.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Purchase_LineView.cshtml",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Purchase_Header\\Purchase_LineView.cshtml",
+              "RelativeDocumentMoniker": "Views\\Purchase_Header\\Purchase_LineView.cshtml",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Purchase_Header\\Purchase_LineView.cshtml",
+              "RelativeToolTip": "Views\\Purchase_Header\\Purchase_LineView.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-24T10:33:51.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Purchase_HeaderController.cs",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\Purchase_HeaderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Purchase_HeaderController.cs",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Controllers\\Purchase_HeaderController.cs",
+              "RelativeToolTip": "Controllers\\Purchase_HeaderController.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAApwIgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T10:47:46.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Purchase_Header\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Purchase_Header\\Index.cshtml",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Purchase_Header\\Index.cshtml",
+              "RelativeToolTip": "Views\\Purchase_Header\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T12:07:16.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Purchase_HeaderView.cshtml",
+              "DocumentMoniker": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Purchase_Header\\Purchase_HeaderView.cshtml",
+              "RelativeDocumentMoniker": "Views\\Purchase_Header\\Purchase_HeaderView.cshtml",
+              "ToolTip": "C:\\Prodection_Project_Erp\\Production_ERP1\\Views\\Purchase_Header\\Purchase_HeaderView.cshtml",
+              "RelativeToolTip": "Views\\Purchase_Header\\Purchase_HeaderView.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-24T10:33:45.031Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

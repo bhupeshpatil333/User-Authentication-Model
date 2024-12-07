@@ -1,0 +1,13 @@
+﻿@model Production_ERP1.Models.Purchase_Header_Line_Model
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("SaveOrUpdate", "Purchase_Header", FormMethod.Post))
+{
+    @Html.Partial("~/Views/Purchase_Header/Purchase_HeaderView.cshtml", Model.header_obj)
+    <div id="PartialViewRender">
+        @Html.Partial("~/Views/Purchase_Header/Purchase_LineView.cshtml", Model.Header_Line_sp)
+    </div>
+        <button type="submit" class="btn btn-success" >Save</button>
+}

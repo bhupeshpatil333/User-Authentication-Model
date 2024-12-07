@@ -1,0 +1,29 @@
+﻿@model Production_ERP1.Models.Request_Header_Model
+@{
+    ViewBag.Title = "RequestHeader";
+}
+
+<table class="table table-bordered border-3 table-secondary" style="margin: 20px auto; width: 80%; border-radius: 10px; overflow: hidden;">
+    <thead>
+        <tr>
+            <th style="padding: 15px; text-align: center;">Request Date</th>
+            <th style="padding: 15px; text-align: center;">Request Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                @Html.HiddenFor(m => m.Request_Header_Id)
+                @Html.TextBoxFor(m => m.Request_Header_Date, new { @class = "form-control", style = "width: 90%; margin: 0 auto;",type="Date" })
+                @Html.ValidationMessageFor(m => m.Request_Header_Date, "", new { @class = "text-danger" })
+            </td>
+            <td style="text-align: center;">
+                @Html.TextBoxFor(m => m.Request_Header_Code, new { @class = "form-control", style = "width: 90%; margin: 0 auto;" })
+                @Html.ValidationMessageFor(m => m.Request_Header_Code, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+          
+        </tr>
+    </tbody>
+</table>

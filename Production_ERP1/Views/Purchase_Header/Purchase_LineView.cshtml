@@ -1,0 +1,260 @@
+﻿@model IEnumerable<Production_ERP1.Db_Context.sp_joinHeader_Result>
+@{
+    ViewBag.Title = "Purchase_LineView";
+    Layout = "";
+}
+<script>
+
+    // CALCULATE BASIC AMT
+    function BasicAmountper(str) {
+        
+        var tr = $(str).closest("tr")
+        //console.log(tr)
+        var qty = tr.find('.classqty').val();
+        var rate = tr.find('.classrate').val();
+
+        if (qty != "" && rate != "") {
+            tr.find(".classbasicamount").val(qty * rate)
+            CalculateBaseic()
+        }
+
+    }
+
+    // CALCULATE BASIC AMT
+    function CalculateBaseic() {
+        $("#BasicAmount").val(0)
+        var sum = 0;
+        $(".classbasicamount").each(function () {
+            if (!isNaN(this.value) && this.value.length != 0) {
+                sum += parseFloat(this.value)
+            }
+            $("#BasicAmount").val(sum)
+        })
+    }
+
+    // CALCULATE DISCOUNT
+    function GetDicount(str)
+    {
+        var tr = $(str).closest("tr")
+        
+        var basicamount = tr.find('.classbasicamount').val();
+        var discountper = tr.find('.classdecountper').val();
+
+        if (discountper != "" && basicamount != "")
+        {
+            tr.find(".classdesamount").val(basicamount * discountper / 100)
+        }
+        else
+        {
+            tr.find(".classdesamount").val(0.00)
+        }
+        DiscountToHeader()
+    }
+
+    // PASS DISCOUNT AMT TO HEADER
+    function DiscountToHeader()
+    {
+        $("#DiscountAmount").val(0)
+        var sum = 0;
+        $(".classdesamount").each(function ()
+        {
+            if (!isNaN(this.value) && this.value.length != 0)
+            {
+                sum += parseFloat(this.value)
+            }
+            $("#DiscountAmount").val(sum)
+        })
+    }
+
+    // PASS TOTAL  AMT TO HEADER
+    function ToalaAmountToHeader()
+    {
+        $("#TotalAmountHeader").val(0)
+        var sum = 0;
+        $(".classAllTotal").each(function ()
+        {
+            if (!isNaN(this.value) && this.value.length != 0)
+            {
+                sum += parseFloat(this.value)
+            }
+            $("#TotalAmountHeader").val(sum)
+        })
+    }
+
+    // CALCULATE ALL AMOUNT IN LAST TEXTBOX
+    function CalculateAllAmounts(str)
+    {
+
+        var tr = $(str).closest("tr")
+        var basic = tr.find('.classbasicamount').val();
+        var taxamount = tr.find('.classtaxAmount').val();
+        var ToatalDisc = tr.find('.classdesamount').val();
+        var taxpercenatagehid = tr.find('.taxpercenatagehid').val()
+
+        console.log("basic" + basic)
+        console.log("taxamount" + taxamount)
+        console.log("ToatalDisc" + ToatalDisc)
+        if (taxamount != "0.00" && ToatalDisc != "0.00") {
+            var diccountamount = parseFloat(basic) - parseFloat(ToatalDisc)
+            var taxcalcu = parseFloat((parseFloat(diccountamount) * parseFloat(taxpercenatagehid)) / 100)
+            var dicount = tr.find(".classAllTotal").val(parseFloat(diccountamount) + parseFloat(taxcalcu))
+            ToalaAmountToHeader()
+        }
+        else if (taxamount == "0.00" && ToatalDisc == "0.00") {
+
+
+            tr.find(".classAllTotal").val(basic)
+            ToalaAmountToHeader()
+
+        }
+        else if (taxamount == "0.00") {
+            var diccountamount = parseFloat(basic) - parseFloat(ToatalDisc)
+            tr.find(".classAllTotal").val(diccountamount)
+            ToalaAmountToHeader()
+
+        }
+        else if (ToatalDisc == "0.00") {
+            var taxcalcu = parseFloat((parseFloat(basic) * parseFloat(taxpercenatagehid)) / 100)
+            tr.find(".classAllTotal").val(parseFloat(taxcalcu) + parseFloat(basic))
+            ToalaAmountToHeader()
+        }
+       
+    }	
+
+    // CALCULATE TAX
+    function GetTax(str) {
+        //$('#TaxAmount').val(0)
+        var sum = 0;
+
+        var tr = $(str).closest("tr")
+        var taxid = tr.find(".classtaxid").val();
+        var basicAmount = tr.find(".classbasicamount").val();
+        var ToatalDisc = tr.find('.classdesamount').val();
+        $.getJSON("/Purchase_Header/GetTaxPer/", { tax_id: taxid }, function (data) {
+            let taxper = data.taxpers;
+          tr.find(".taxpercenatagehid").val(taxper)
+            let taxamount = (basicAmount * taxper) / 100
+            tr.find(".classtaxAmount").val(taxamount);
+
+            $('#TaxAmountHeader').val(taxamount)
+            UpdateTotalTaxAmount();
+       
+
+        })
+    }
+
+    // PASS TAX TO HEADER
+    function UpdateTotalTaxAmount() {
+        var totalTax=0;
+        
+        $(".classtaxAmount").each(function () {
+            var taxAmount = parseFloat($(this).val()) || 0;
+            totalTax += taxAmount;
+        });
+        $('#TaxAmountHeader').val(totalTax.toFixed(2)); 
+    }
+
+    // CALCULATE BASIC TAX
+    function GetTaxTotal(str) {
+
+        var tr = $(str).closest("tr");
+
+        // Get the basic amount
+        var basicAmount = parseFloat(tr.find(".classbasicamount").val()) || 0;
+
+        // Get the selected tax ID
+        var taxid = tr.find(".classtaxid").val();
+        var discountamount = tr.find(".classdesamount").val();
+
+        // Fetch the tax percentage based on the selected tax ID
+        $.getJSON("/Purchase_Header/GetTaxPer/", { tax_id: taxid }, function (data) {
+            let taxper = data.taxpers;
+            tr.find(".taxpercenatagehid").val(taxper)
+
+            let taxAmount = (basicAmount * taxper) / 100;
+
+            // Update the tax amount field
+            tr.find(".classtaxAmount").val(taxAmount.toFixed(2)); // Set to 2 decimal places
+
+            // Calculate the total amount after getting the tax amount
+            var totalAmount = basicAmount + taxAmount;
+
+            // Update the total amount field
+            tr.find(".classtaxtotalAmt").val(totalAmount.toFixed(2)); // Set to 2 decimal places
+        });
+    }
+
+      
+
+</script>
+
+<table class="table table-bordered border-3 table-secondary">
+    <tr>
+        <th style="padding: 15px; text-align: center;">Product Name</th>
+        <th style="padding: 15px; text-align: center;">Item Name</th>
+        <th style="padding: 15px; text-align: center;">Quantity</th>
+        <th style="padding: 15px; text-align: center;">Rate</th>
+        <th style="padding: 15px; text-align: center;">Basic Amount</th>
+        <th style="padding: 15px; text-align: center;">Discount Percentage(%)</th>
+        <th style="padding: 15px; text-align: center;">Discount Amount</th>
+        <th style="padding: 40px; text-align: center;">Tax </th>
+        <th style="padding: 15px; text-align: center;">Tax Amount</th>
+       
+
+        <th style="padding: 15px; text-align: center;">Total Amount</th>
+    </tr>
+    <tbody id="Purchase_Line_table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(m => item.Product_Id)
+                    @Html.TextBoxFor(m => item.Product_Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => item.Product_Name, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.HiddenFor(m => item.Item_Id)
+                    @Html.TextBoxFor(m => item.Item_Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => item.Item_Name, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => item.Qty, new { @class = "form-control classqty", OnChange = "BasicAmount(this)" })
+                    @Html.ValidationMessageFor(m => item.Qty, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => item.rate, new { @class = "form-control classrate", id = "idrate", OnChange = "BasicAmountper(this)", Value = "0.00" })
+                    @Html.ValidationMessageFor(m => item.rate, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <input type="text" id="BasicAmount" class="form-control classbasicamount " name="item.Basic_Amount" , Value="0.00" />
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => item.discoutper, new { @class = "form-control classdecountper", OnChange = "GetDicount(this)", Value = "0.00" })
+                    @Html.ValidationMessageFor(m => item.discoutper, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => item.descoutamt, new { @class = "form-control classdesamount", Value = "0.00" })
+                    @Html.ValidationMessageFor(m => item.descoutamt, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <input type="hidden" class="taxpercenatagehid" />
+                    @Html.DropDownList("item.tax_id", new SelectList(ViewBag.tax, "Value", "Text"), new { @class = "form-control classtaxid", OnChange = "GetTax(this);GetTaxTotal(this);", style = "width: 100%; margin: 0 0; ", Value = "0.00" })
+                    @Html.ValidationMessageFor(m => item.tax_id, "", new { @class = "text-danger" })
+                </td>
+               
+
+                <td>
+                    @Html.HiddenFor(m => item.tax_totalamount, new { @class = "form-control classtaxtotalAmt ", @readonly = "readonly" })
+
+                    @Html.TextBoxFor(m => item.taxamount, new { @class = "form-control classtaxAmount", onblur = "CalculateAllAmounts(this)", Value = "0.00" })
+                    @Html.ValidationMessageFor(m => item.taxamount, "", new { @class = "text-danger" })
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(m => item.toalamout, new { @class = "form-control classAllTotal", Value = "0.00" })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

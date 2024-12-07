@@ -1,0 +1,35 @@
+﻿@model Production_ERP1.Models.User_Registration_Model
+
+@{
+    ViewBag.Title = "OtpPage";
+}
+
+
+@********************************************************************* This is Regenerate OTP Page ********************************@
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <img src="~/Image/Login_Images/otp.png" class="img-fluid" alt="OTP Image" style="max-width: auto; height: auto;" />
+        </div>
+
+        <div class="col-md-6">
+
+            @using (Html.BeginForm("RegenerateOtp", "Login", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>User Email-id</label>
+                        @Html.ValidationMessageFor(m => m.Email_Id, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Email_Id, new { @class = "form-control", @placeholder = "Enter your Email-id", Value = @TempData["Email_Id"], ReadOnly = "ReadOnly" })
+                    </div>
+                    <div class="col-lg-12">
+                        <br />
+                        <button type="submit" class="btn btn-primary">Resend Otp</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

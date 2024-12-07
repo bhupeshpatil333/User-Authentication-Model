@@ -1,0 +1,31 @@
+﻿@model  IEnumerable<Production_ERP1.Db_Context.spGetPerson_TypeReport_Result>
+@{
+    ViewBag.Title = "GetPersonTypeReport";
+}
+
+<h2>Get PersonType Report</h2>
+
+
+<table class="table table-bordered border-4">
+    <thead>
+        <tr>
+            <th>Person_Type Id</th>
+            <th>Person Name</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PersonType_Id </td>
+                <td>@item.Person_Name</td>
+
+               
+                <td>@Html.ActionLink("Edit", "GetById", new { id = item.PersonType_Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteData", new { id = item.PersonType_Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Production_ERP1.Models.Request_Line_Model>
+@{
+    ViewBag.Title = "Request_Line";
+}
+
+@*<h2>Request_Line</h2>*@
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<script>
+
+
+    function ItemDddl() {
+        let productid = $("#prid").val();
+
+        $.ajax({
+            url: "/PO_Request/ItemDDL",
+            data: { product_id: productid },
+            type: "Get",
+            success: function (data) {
+                let dropdown = $("#itemddl");
+                dropdown.empty()
+                $.each(data, function (index, data) {
+
+                    dropdown.append($("<option/>",{
+                        value: data.Value,
+                        text: data.Text
+                    }))
+                })
+            },
+            error: function () {
+                alert("An error occurred while fetching items.");
+            }
+
+        })
+    }
+
+    function DeleteRow() {
+        console.log('delete work');
+        const table = $("#PO_Line_table");
+        if (table.find("tr").length > 1) {
+            table.find("tr:last").remove();
+        } else {
+            console.log('Cannot delete the last row.'); 
+        }
+        
+    }
+
+    function AddRow() {
+        let Row = "<tr>" +
+            "<td>@Html.Raw(Ajax.JavaScriptStringEncode(@Html.DropDownList("item.Product_Id", new SelectList(ViewBag.ProductDDL, "Value", "Text"), new { @class = "form-control", id = "prid",style = "width: 90%; margin: 0 auto;",  OnChange = "ItemDddl()" }).ToHtmlString()))</td>" +
+              "<td>@Html.Raw(Ajax.JavaScriptStringEncode( @Html.DropDownList("item.Item_Id", new SelectList(ViewBag.ItemDDL, "Value", "Text"), new { @class = "form-control", style = "width: 90%; margin: 0 auto;" }).ToHtmlString()))</td>" +
+
+            ' <td>@Html.TextBox("item.Qty", "", new { @class = "form-control", style = "width: 50%; margin: 0 auto;" })</td>'+
+        "</tr>"
+        $('#PO_Line_table').append(Row)
+
+    }
+</script>
+
+<button class="btn btn-primary" OnClick="AddRow()" type="button"  style = "width: 8%; margin: 0 130px;"> AddRow</button>
+<button class="btn btn-danger" OnClick="DeleteRow()" type="button"  style = "width: 8%; margin: 0 auto;"> DeleteRow </button>
+
+<table class="table table-bordered border-3 table-secondary" style="margin: 20px auto; width: 80%; border-radius: 10px; overflow: hidden;">
+    <tr>
+        <th style="padding: 15px; text-align: center;">Product Name</th>
+        <th style="padding: 15px; text-align: center;">Item Name</th>
+        <th style="padding: 15px; text-align: center;">Quantity</th>
+    </tr>
+    <tbody id="PO_Line_table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DropDownListFor(m => item.Product_Id, new SelectList(ViewBag.ProductDDL, "Value", "Text"), new { @class = "form-cotrol",id="prid",OnChange= "ItemDddl()", style = "width: 90%; margin: 0 auto;" })</td>
+                <td><select name="item.Item_Id" id="itemddl" class="form-control",style = "width: 90%; margin: 0 auto;" ></select></td>
+                <td>@Html.TextBoxFor(m => item.Qty, new { @class = "form-cotrol", style = "width: 50%; margin: 0 auto;" })</td>
+            </tr>
+        }
+        @for (int i = 0; i < 1; i++)
+        {
+            <tr>
+                <td>@Html.DropDownList("item.Product_Id", new SelectList(ViewBag.ProductDDL, "Value", "Text"), new { @class = "form-control", id = "prid", OnChange = "ItemDddl()", style = "width: 90%; margin: 0 auto;" })</td>
+                <td>@Html.DropDownList("item.Item_Id", new SelectList(ViewBag.ItemDDL, "Value", "Text"), new {@class="form-control", style = "width: 90%; margin: 0 auto;" })</td>
+                @*<td><select name="item.Item_Id" id="itemddl" class="form-control"></select></td>*@
+                <td>@Html.TextBox("item.Qty", "", new { @class = "form-control", style = "width: 50%; margin: 0 auto;" })</td>
+
+            </tr>
+
+        }
+
+
+    </tbody>
+</table>

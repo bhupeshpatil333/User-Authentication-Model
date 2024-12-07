@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Db_ProductionModelStoreContainer" CdmEntityContainer="Db_Production_Entities">
+    <EntitySetMapping Name="User_Registration">
+      <EntityTypeMapping TypeName="Db_ProductionModel.User_Registration">
+        <MappingFragment StoreEntitySet="User_Registration">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="Verify" ColumnName="Verify" />
+          <ScalarProperty Name="Profile_Image" ColumnName="Profile_Image" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailConfigs">
+      <EntityTypeMapping TypeName="Db_ProductionModel.EmailConfig">
+        <MappingFragment StoreEntitySet="EmailConfig">
+          <ScalarProperty Name="from_password" ColumnName="from_password" />
+          <ScalarProperty Name="from_mail_id" ColumnName="from_mail_id" />
+          <ScalarProperty Name="Config_host" ColumnName="Config_host" />
+          <ScalarProperty Name="Config_port" ColumnName="Config_port" />
+          <ScalarProperty Name="Config_id" ColumnName="Config_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailTemplates">
+      <EntityTypeMapping TypeName="Db_ProductionModel.EmailTemplate">
+        <MappingFragment StoreEntitySet="EmailTemplate">
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="template_body" ColumnName="template_body" />
+          <ScalarProperty Name="template_subject" ColumnName="template_subject" />
+          <ScalarProperty Name="template_id" ColumnName="template_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UpdateOtp" FunctionName="Db_ProductionModel.Store.UpdateOtp" />
+    <EntitySetMapping Name="Client_Registration">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Client_Registration">
+        <MappingFragment StoreEntitySet="Client_Registration">
+          <ScalarProperty Name="Client_Contact" ColumnName="Client_Contact" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Client_GST_Document" ColumnName="Client_GST_Document" />
+          <ScalarProperty Name="Client_GSTNo" ColumnName="Client_GSTNo" />
+          <ScalarProperty Name="Client_Logo" ColumnName="Client_Logo" />
+          <ScalarProperty Name="ClientBusiness_Name" ColumnName="ClientBusiness_Name" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="Db_ProductionModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="ErrorData" ColumnName="ErrorData" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorFunction" ColumnName="ErrorFunction" />
+          <ScalarProperty Name="ErrorController" ColumnName="ErrorController" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+          <ScalarProperty Name="PersonType_Id" ColumnName="PersonType_Id" />
+          <ScalarProperty Name="Person_Contact" ColumnName="Person_Contact" />
+          <ScalarProperty Name="Person_Name" ColumnName="Person_Name" />
+          <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Person_Type">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Person_Type">
+        <MappingFragment StoreEntitySet="Person_Type">
+          <ScalarProperty Name="Person_Name" ColumnName="Person_Name" />
+          <ScalarProperty Name="PersonType_Id" ColumnName="PersonType_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Tax">
+        <MappingFragment StoreEntitySet="Tax">
+          <ScalarProperty Name="Tax_Percentage" ColumnName="Tax_Percentage" />
+          <ScalarProperty Name="Tax_Name" ColumnName="Tax_Name" />
+          <ScalarProperty Name="Tax_Id" ColumnName="Tax_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spGetItemReport" FunctionName="Db_ProductionModel.Store.spGetItemReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Db_ProductionModel.spGetItemReport_Result">
+          <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetPerson_TypeReport" FunctionName="Db_ProductionModel.Store.spGetPerson_TypeReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Db_ProductionModel.spGetPerson_TypeReport_Result">
+          <ScalarProperty Name="PersonType_Id" ColumnName="PersonType_Id" />
+          <ScalarProperty Name="Person_Name" ColumnName="Person_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetPersonReport" FunctionName="Db_ProductionModel.Store.spGetPersonReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Db_ProductionModel.spGetPersonReport_Result">
+          <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
+          <ScalarProperty Name="Person_Name" ColumnName="Person_Name" />
+          <ScalarProperty Name="Person_Contact" ColumnName="Person_Contact" />
+          <ScalarProperty Name="PersonType_Id" ColumnName="PersonType_Id" />
+          <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetProductReport" FunctionName="Db_ProductionModel.Store.spGetProductReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Db_ProductionModel.spGetProductReport_Result">
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetTaxReport" FunctionName="Db_ProductionModel.Store.spGetTaxReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Db_ProductionModel.spGetTaxReport_Result">
+          <ScalarProperty Name="Tax_Id" ColumnName="Tax_Id" />
+          <ScalarProperty Name="Tax_Name" ColumnName="Tax_Name" />
+          <ScalarProperty Name="Tax_Percentage" ColumnName="Tax_Percentage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PO_Request_Header">
+      <EntityTypeMapping TypeName="Db_ProductionModel.PO_Request_Header">
+        <MappingFragment StoreEntitySet="PO_Request_Header">
+          <ScalarProperty Name="Request_Header_Date" ColumnName="Request_Header_Date" />
+          <ScalarProperty Name="Request_Header_Code" ColumnName="Request_Header_Code" />
+          <ScalarProperty Name="Request_Header_Id" ColumnName="Request_Header_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PO_Request_Line">
+      <EntityTypeMapping TypeName="Db_ProductionModel.PO_Request_Line">
+        <MappingFragment StoreEntitySet="PO_Request_Line">
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Request_Header_Id" ColumnName="Request_Header_Id" />
+          <ScalarProperty Name="Request_Line_Id" ColumnName="Request_Line_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchase_Header">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Purchase_Header">
+        <MappingFragment StoreEntitySet="Purchase_Header">
+          <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+          <ScalarProperty Name="Discount_Amount" ColumnName="Discount_Amount" />
+          <ScalarProperty Name="Tax_Amount" ColumnName="Tax_Amount" />
+          <ScalarProperty Name="Basic_Amount" ColumnName="Basic_Amount" />
+          <ScalarProperty Name="PO_Date" ColumnName="PO_Date" />
+          <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
+          <ScalarProperty Name="Requirement_Header_Id" ColumnName="Requirement_Header_Id" />
+          <ScalarProperty Name="Purchase_Header_Id" ColumnName="Purchase_Header_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchase_Line_Table">
+      <EntityTypeMapping TypeName="Db_ProductionModel.Purchase_Line_Table">
+        <MappingFragment StoreEntitySet="Purchase_Line_Table">
+          <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+          <ScalarProperty Name="Discount_Amount" ColumnName="Discount_Amount" />
+          <ScalarProperty Name="Tax_Total_Amount" ColumnName="Tax_Total_Amount" />
+          <ScalarProperty Name="Basic_Amount" ColumnName="Basic_Amount" />
+          <ScalarProperty Name="Discount_Percentage" ColumnName="Discount_Percentage" />
+          <ScalarProperty Name="Tax_Amount" ColumnName="Tax_Amount" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Tax_Id" ColumnName="Tax_Id" />
+          <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Purchase_Header_Id" ColumnName="Purchase_Header_Id" />
+          <ScalarProperty Name="Purchase_Line_Id" ColumnName="Purchase_Line_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_joinHeader" FunctionName="Db_ProductionModel.Store.sp_joinHeader">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Db_ProductionModel.sp_joinHeader_Result">
+          <ScalarProperty Name="Request_Header_Id" ColumnName="Request_Header_Id" />
+          <ScalarProperty Name="Request_Header_Code" ColumnName="Request_Header_Code" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Item_Id" ColumnName="Item_Id" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="tax_id" ColumnName="tax_id" />
+          <ScalarProperty Name="taxamount" ColumnName="taxamount" />
+          <ScalarProperty Name="tax_totalamount" ColumnName="tax_totalamount" />
+          <ScalarProperty Name="discoutper" ColumnName="discoutper" />
+          <ScalarProperty Name="descoutamt" ColumnName="descoutamt" />
+          <ScalarProperty Name="toalamout" ColumnName="toalamout" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetClientReports" FunctionName="Db_ProductionModel.Store.spGetClientReports">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Db_ProductionModel.spGetClientReports_Result">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientBusiness_Name" ColumnName="ClientBusiness_Name" />
+          <ScalarProperty Name="Client_Logo" ColumnName="Client_Logo" />
+          <ScalarProperty Name="Client_GSTNo" ColumnName="Client_GSTNo" />
+          <ScalarProperty Name="Client_GST_Document" ColumnName="Client_GST_Document" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Client_Contact" ColumnName="Client_Contact" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
